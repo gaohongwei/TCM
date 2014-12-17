@@ -3,6 +3,8 @@
 display: block;
 width: 100px;
 height:20px;
+color:black;
+font-size: 12pt;
 }
 /* Resize input */
 .formtastic .stringish input {

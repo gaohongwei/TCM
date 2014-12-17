@@ -28,6 +28,7 @@ EasyWeb::Application.routes.draw do
     resources :users  
     resources :settings         
   end
+  resources :tasks 
   get '/news/media-resources' => 'application/pages#show', url: 'news/media-resources'
 
   get '/news/news-releases' => 'application/news#index', filter: 'News Releases', as: :news_releases

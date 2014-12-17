@@ -1,0 +1,16 @@
+<% ns=get_namespace() %>
+<%if ns.nil?%>
+<% obj_ns=@obj %>
+<% else %>
+<% obj_ns=[ns,@obj] %>
+<% end %>
+<div class="breadcrumb" >
+  <%= semantic_bootstrap_nested_form_for obj_ns do |f| %>
+    <%= f.inputs do %>
+      <%= f.input :name,label:tt('name') %>
+      <%= f.input :description, label:tts('description') %>               
+    <% end %>
+
+    <%= button_submit(f) %>
+  <% end %>
+</div>

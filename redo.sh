@@ -116,6 +116,7 @@ add_page_route(){
 	#sed "s/.*root :to =>.*/  root :to => '${TEST}s#index'/" $fname > ${fname}.tmp
 	#cp ${fname}.tmp ${fname}
 fname="$DST/config/routes.rb"
+sed -i '$iresources :tasks' $fname
 sed -i '$inamespace :admin do resources :users end' $fname
 sed -i '$i get "/*url" => "application/pages#show", as: :page' $fname
 sed -i '$i root :to=>"application/pages#show",url:"index"' $fname
