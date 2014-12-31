@@ -25,8 +25,8 @@ var app = angular.module('app',['services','checklist-model']);
     };
   }); 
   //,Tasks,TaskOptions,OptionUsers
-  app.controller('tasksController',function($scope,Tasks,TaskOptions,OptionUsers){
-  //app.controller('tasksController', ['$scope','Tasks','TaskOptions','OptionUsers',function($scope,Tasks,TaskOptions,OptionUsers){
+  //app.controller('tasksController',function($scope,Tasks,TaskOptions,OptionUsers){
+  app.controller('tasksController', ['$scope','Tasks','TaskOptions','OptionUsers',function($scope,Tasks,TaskOptions,OptionUsers){
  //app.controller('tasksController',[function($scope,services){    
  //app.controller('tasksController',['$scope','services',function($scope,services){
     $scope.initialize = function( root_id,user_id ) {
@@ -71,4 +71,4 @@ var app = angular.module('app',['services','checklist-model']);
       console.log($scope.answers);        
     };    
                     
-  });
+  }]);

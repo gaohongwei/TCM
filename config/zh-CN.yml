@@ -45,6 +45,9 @@ zh-CN:
   cancel: "取消" 
   task_common: "活动、任务"           
   please_choose: "请选择：" 
+  contact_us: "联系我们：" 
+  wechat: "微信："
+  email: "邮件："       
 
   description: "描述"  
   type: "类型"
