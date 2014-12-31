@@ -22,13 +22,12 @@
     <div class="col-md-10">
       <%= display(get_body_header(),2) %>
       <%= yield %>
-      <%#= debug params %>
+      <%#= debug params %>       
     </div>
     <div class="col-md-1"></div>
   </div>
-</div>
-<script> 
-$(function(){ 
-   //$('.carousel').carousel(interval: 2000); 
-}); 
-</script> 
+  <div class="row well">
+  <%= render 'shared/footer' %>
+  </div>    
+</div> 
+</body>

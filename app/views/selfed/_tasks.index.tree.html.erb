@@ -10,8 +10,8 @@
       <a class="btn btn-danger"  ng-show="item.showDelete" ng-click="exclude(item)"><%=tt('exclude')%></a>
       <a class="btn btn-danger"  ng-show="item.showDelete" ng-click="delete(item)"><%=tt('delete')%></a>
     </span>        
-    <ul ng-if="item.items">
-      <li ng-repeat="item in item.items" ng-include="'taskTree'">
+    <ul ng-if="item.kids">
+      <li ng-repeat="item in item.kids" ng-include="'taskTree'">
       </li>
     </ul>
   </script>
@@ -36,7 +36,7 @@
 <script>
   app = angular.module('app', []);
   app.factory('tasksInitializer', function(){
-    return <%= @objs.to_json.html_safe %>;
+    return <%= @objsn.to_json.html_safe %>;
   });
 
   app.controller('tasksController',function($scope,$location,tasksInitializer){

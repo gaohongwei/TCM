@@ -1,7 +1,6 @@
 class Setting < RailsSettings::CachedSettings
-  attr_accessible :var
+  #attr_accessible :var
   before_save :remove_extra
-
   def self.news_header
     {
         title: self['news_header_title'],

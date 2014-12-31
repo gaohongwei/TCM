@@ -1,13 +1,95 @@
-Devise.secret_key was not set. Please add the following to your Devise initializer:
 
-  config.secret_key = '5984cb8521d257cee97161892210a823e68fb3cff300f76e4a8b49962a6b50244ab06031e358db04459c80c781a2cfe2fb60c11897b999542efa7bbe96116724'
+Easy question creation
 
-  # config.secret_key = '30c47ccfad895b66f65e16c710c3ad88f24ef8b1fa90b55af23fb61e9d552861544671e57ed8152fd8296a41c0a8913ae616a96b81582954cbbe26fa41f6934c'
+Build your own or use expert templates.
 
 
-rvm gemset rename current_gemset_name new_gemset_name
-rvm gemset use new_gemset_name
+Send surveys to anyone
+Use the web, email, or social media.
 
-job titile:string description:string 
 
-10087.53
+Smart reporting
+Gain insights with powerful analytics.
+
+https://www.surveymonkey.com/survey-thanks/?sm=v4bixFDnXmNUCZujM%2fl%2beMwPayEQ%2fjD4xpHO39gBSJI%3d
+
+  app.factory('tasksInitializer', function(){
+    return <%= @obj.to_json.html_safe %>;
+  });
+   
+  app.factory('tasksInitializer', function(){
+    return <%= @obj.to_json.html_safe %>;
+  });
+  
+symbols=[:name,:id]
+ for sym in symbols do
+   puts sym
+  end
+
+def  get_nested(item,attributes) 
+  me={}
+  for att in attributes do
+   me[att]=item[att]
+  end
+
+  if item.children.size > 0
+    kids||=[]
+    item.children.each do |c|
+      kids<<get_nested(c)
+    end
+    me[:kids]=kids 
+  end
+
+  me
+end
+
+t=Task.first
+get_nested(t,[:name,:id])
+
+
+def  get_kids(item) 
+  kids||=[]
+  if item.children
+    item.children.each do |c|
+      a={}
+      a[:name]=c.name
+      kkids=get_kids(c)
+      a[:kids]=kkids if  kkids    
+      kids<<a
+    end
+  end
+  kids
+end
+
+t=Task.first
+get_kids(t)
+
+
+def get_parent(item)
+  tree=[]
+  puts "item="+item.name
+  if item.parent
+    tree<<item.parent.name
+    tree<<get_parent(item.parent)
+  else
+    return []
+  end
+end
+
+t=Task.last
+get_parent(t).flatten
+2.1.3 :003 > TaskType.model_name.param_key
+ => "task_type" 
+2.1.3 :004 > "TaskType".underscore
+ => "task_type" 
+ 
+<table class="table table-striped table-bordered table-condensed">
+
+./current/app/assets/javascripts/admin/controllers/widget_controller.coffee:      
+<li id="widget-{{ child.$$.r.id }}" compile='nested_widget_template', ng-repeat='relation in child.progenies'></li>
+./current/app/views/admin/partials/dashboard/nav-widgets.html.haml:    
+%li{ id: "widget-{{ progeny.$$.r.id }}", compile: 'nested_widget_template', ng_repeat: 'relation in Widget.$$.root.progenies' }
+./current/app/views/admin/partials/dashboard/nav-widgets.html.haml:    
+%li{ id: "widget-{{ progeny.$$.r.id }}", compile: 'nested_widget_template', ng_repeat: 'relation in Widget.$$.root.progenies' }
+./current/app/views/admin/partials/dashboard/test.html.haml:    
+%li{ id: "widget-{{ child.$$.r.id }}", compile: 'nested_widget_template', ng:{ repeat: 'relation in Widget.$$.root.progenies' }}

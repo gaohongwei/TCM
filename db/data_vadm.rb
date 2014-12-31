@@ -76,10 +76,11 @@ view_adm:[
       caps:"name;description;photo"
     },  
 ############## Task View 
-    {name:'task',action_scope:'index'
+    {name:'task',action_scope:'index',
+      cols:"name;description;user.name;public",  
+      caps:"name;description;owner;public"         
     },  
-    {name:'task',action_scope:'index:tree'
-    },      
+    #{name:'task',action_scope:'index:tree'},      
 ############## Menu View     
     {name:'menu',action_scope:'index',
       cols:"name;title;url;parent.name;active",

@@ -38,6 +38,7 @@ zh-CN:
   reply: "回复" 
   vote: "发表意见"    
   exclude: "排除" 
+  detail: "细节" 
 
   description: "描述"  
   type: "类型"
@@ -105,7 +106,8 @@ zh-CN:
   Communication: "通讯录"
   Home: "首页"
   all: "所有"
-  group: "班级" 
+  group: "用户群" 
+  class: "班级"   
   
   xzyz: "武汉市新洲一中"
   wuda: "武汉大学"

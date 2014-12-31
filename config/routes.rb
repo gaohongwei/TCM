@@ -1,5 +1,8 @@
-EasyWeb::Application.routes.draw do
-  devise_for :users  
+Rails.application.routes.draw do  
+  devise_for :users do
+    get 'sign_out' => 'devise/sessions#destroy'
+    get 'logout' => 'devise/sessions#destroy'    
+  end    
   get "pages/show"
   namespace :admin do 
     resources :words     
@@ -23,12 +26,23 @@ EasyWeb::Application.routes.draw do
     resources :groups do
       resources :users
     end
-    resources :roles    
-    resources :groups
-    resources :users  
-    resources :settings         
+    resources :settings  
+    resources :users             
   end
   resources :tasks 
+  resources :task_types 
+  resources :task_options  
+  resources :task_option_answers 
+  resources :roles   
+  resources :groups    
+  namespace :api, defaults: { format: "json" } do
+    namespace :v1 do
+      resources :tasks
+      resources :task_options        
+      resources :option_users     
+    end
+  end
+
   get '/news/media-resources' => 'application/pages#show', url: 'news/media-resources'
 
   get '/news/news-releases' => 'application/news#index', filter: 'News Releases', as: :news_releases

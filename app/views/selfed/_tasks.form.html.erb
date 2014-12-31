@@ -4,13 +4,21 @@
 <% else %>
 <% obj_ns=[ns,@obj] %>
 <% end %>
+New Task
 <div class="breadcrumb" >
   <%= semantic_bootstrap_nested_form_for obj_ns do |f| %>
     <%= f.inputs do %>
+      <%= f.label 'Parent:'+ @obj.parent.name if @obj.parent%>
+      <%= f.input :pid,:as => :hidden %>      
       <%= f.input :name,label:tt('name') %>
-      <%= f.input :description, label:tts('description') %>               
+      <%= f.input :description, label:tts('description') %>   
+      <div class='well'>
+      <%= f_input(f,'type:l') %>
+      </div>
+      <%= f.input :order_by, label:tts('order_by') %>
+      <%= f.input :active, label:tts('active') %>
+      <%= f.input :public, label:tts('public') %>                                             
     <% end %>
-
     <%= button_submit(f) %>
   <% end %>
 </div>

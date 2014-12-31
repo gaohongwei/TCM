@@ -1,6 +1,9 @@
+module Api::V1
 class TasksController < AdminController
+  protect_from_forgery
+  respond_to :json  
   def show
-    current_user||=User.find(2)
+    current_user||=User.find(2)    
     t=Task.find(params[:id])
     @root_id=t.root_id
     @user_id=current_user.id    
@@ -8,10 +11,16 @@ class TasksController < AdminController
   end
   def new
     pid=params[:pid]
-    @obj=Task.new(parent_id:pid,pid:pid,active:true,user_id:current_user.id,public:false)
+    @obj=Task.new(parent_id:pid,pid:pid,active:true,user_id:current_user.id)
   end  
   def index
-    @objs = Task.top.page(params[:page]).per(10) 
+    id= params[:id]
+    if id 
+      t=Task.find(id)
+      @objs=[get_nested(t,[:name,:id,'options',:options])]
+    else
+      @objs = Task.top
+    end
     respond_with @objs
   end 
   private
@@ -24,4 +33,5 @@ class TasksController < AdminController
       params.require(:task).permit!
     end
 
+end
 end

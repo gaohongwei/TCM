@@ -17,14 +17,14 @@ class AdminController < ApplicationController
   #rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   def login_in()
   # Developemt, debug  
-    current_user ||=User.find(8)
-    sign_in current_user   
+    #current_user ||=User.find(1)
+    #sign_in current_user   
   end  
   before_filter do  # fix ActiveModel::ForbiddenAttributesError
     resource = controller_name.singularize.to_sym
     method = "get_params"
     params[resource] &&= send(method) if respond_to?(method, true)
-    login_in()
+    #login_in()
   end 
   load_and_authorize_resource 
   def record_not_found  
