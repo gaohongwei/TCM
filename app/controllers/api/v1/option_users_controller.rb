@@ -17,14 +17,13 @@ class OptionUsersController < AdminController
     respond_with objs   
   end 
   def create
-    current_user||=User.find(2)       
     @obj={rc:0}
     new_option_ids=params[:option_user][:opts]
+    current_user||=User.find(2)      
     user_id=current_user.id 
-    OptionUser.set_options(new_option_ids,user_id)   
-    format.json { render json: { status:200}}
-    format.json { render json: { full_messages: 'Succeeded.' }, status: 200 }    
-    #respond_with ids_new     
+    OptionUser.set_options(new_option_ids,user_id) 
+    #respond_with new_option_ids 
+    render :json => {:options => new_option_ids}
   end  
   def show
     @obj=OptionUser.find(params[:id])
