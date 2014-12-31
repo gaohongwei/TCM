@@ -39,6 +39,12 @@ zh-CN:
   vote: "发表意见"    
   exclude: "排除" 
   detail: "细节" 
+  add_option: "增加选项" 
+  save_option: "保存选择" 
+  save: "保存" 
+  cancel: "取消" 
+  task_common: "活动、任务"           
+  please_choose: "请选择：" 
 
   description: "描述"  
   type: "类型"

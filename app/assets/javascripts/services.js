@@ -1,10 +1,4 @@
 var services = angular.module('services',['ngResource']);
- 
-services.config([
-  "$httpProvider", function($httpProvider) {
-    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
-  }
-]);
 
 //http://draptik.github.io/blog/2013/07/28/restful-crud-with-angularjs/
 services.factory('Tasks', function ($resource) {
@@ -35,7 +29,7 @@ services.factory('TaskOptions', function ($resource) {
   return $resource('/api/v1/task_options', {},
   {
       query: {  method: 'GET', 
-                params: {id: '@id'},
+                params: {tid: '@tid'},
                 isArray: true },
       create: { method: 'POST' }
   })

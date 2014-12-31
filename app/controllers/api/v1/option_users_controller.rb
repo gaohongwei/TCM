@@ -7,6 +7,7 @@ class OptionUsersController < AdminController
     # Find all children task_id for 
     # Find all option_id for a user on this task   
     # save as {task_id:[option_id,...]}
+    current_user||=User.find(2)      
     uid= params[:uid]
     tid= params[:tid]
     if uid && uid == 'me'
@@ -16,6 +17,7 @@ class OptionUsersController < AdminController
     respond_with objs   
   end 
   def create
+    current_user||=User.find(2)       
     @obj={rc:0}
     new_option_ids=params[:option_user][:opts]
     user_id=current_user.id 

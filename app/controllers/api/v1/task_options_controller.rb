@@ -3,15 +3,22 @@ class TaskOptionsController < AdminController
   protect_from_forgery
   respond_to :json    
   def index
-    id= params[:id]
+    id= params[:tid]
     if id 
-      @objs=TaskOption.by_task(id)
+      @objs=TaskOption.by_task(tid)
     else
       @objs=TaskOption.all
     end
     respond_with @objs
   end 
-
+  def create
+    @obj=TaskOption.new(params[:task_option])
+    if @obj.save
+      respond_with @obj
+    else
+     respond_with []
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

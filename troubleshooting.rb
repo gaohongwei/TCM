@@ -44,6 +44,7 @@ secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 Tell Rails to serve static files. 
 config/environments/production.rb
 config.serve_static_assets = true
+config.assets.js_compressor = Uglifier.new(mangle: false)
 
   8.
   Resource interpreted as Stylesheet but transferred with MIME type text/html
