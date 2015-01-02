@@ -4,7 +4,7 @@ class TasksController < AdminController
     t=Task.find(params[:id])
     @root_id=t.root_id
     @user_id=current_user.id    
-    @obj=[get_nested(t,[:name,:id])]
+    @obj=[get_nested(t,[:name,:id,:user])]
   end
   def new
     pid=params[:pid]

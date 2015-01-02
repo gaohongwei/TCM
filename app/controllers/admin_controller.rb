@@ -1,8 +1,8 @@
 require 'crud_helper'
 class AdminController < ApplicationController
-  before_action :authenticate_user!, only: [:new,:edit,:update, :destroy] 
+  before_filter :authenticate_user!, only:[:new,:create,:edit,:update, :destroy] 
   before_action :set_obj, only: [:show, :edit, :update, :destroy]  
-   
+
   include ApplicationHelper
   include CrudHelper 
   
@@ -37,5 +37,4 @@ class AdminController < ApplicationController
   def after_sign_in_path_for(user)
     admin_menus_path
   end 
-
 end

@@ -13,10 +13,11 @@ class TaskOptionsController < AdminController
   end 
   def create
     @obj=TaskOption.new(params[:task_option])
+    fill_user_id()      
     if @obj.save
       respond_with @obj
     else
-     respond_with []
+      render :json => {error:'error'}
     end
   end
 

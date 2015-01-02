@@ -1,5 +1,6 @@
 var app = angular.module('app',['services','checklist-model']);
 
+
   app.directive("option", function () {
     return {
       restrict: 'E',

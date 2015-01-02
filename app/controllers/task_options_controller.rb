@@ -1,4 +1,4 @@
-class TaskOptionsController < AdminController
+class TaskOptionsController < AdminController0
   def index
     id= params[:id]
     if id 
@@ -8,7 +8,7 @@ class TaskOptionsController < AdminController
     end
     respond_with @objs
   end 
-  def create
+  def create0
     @objs=TaskOption.new(params[:task_option])    
     if @objs.save 
       respond_with [@objs.id]

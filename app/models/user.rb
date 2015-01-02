@@ -34,5 +34,8 @@ class User < ActiveRecord::Base
     ids=ug.map{|x|x.id}
     ids.include?(self.id)
   end
+  def brief
+    {id:id,vname:vname}
+  end    
 
 end

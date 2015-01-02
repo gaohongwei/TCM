@@ -20,4 +20,7 @@ class Task < ActiveRecord::Base
   def options
     TaskOption.by_task(self.id)
   end
+  def option_users
+    TaskOption.by_task(self.id)
+  end    
 end
