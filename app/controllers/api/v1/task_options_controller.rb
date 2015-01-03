@@ -3,13 +3,35 @@ class TaskOptionsController < AdminController
   protect_from_forgery
   respond_to :json    
   def index
-    id= params[:tid]
-    if id 
-      @objs=TaskOption.by_task(tid)
+    task_id= params[:tid]
+    if task_id 
+      task=Task.find(task_id)
+      task_ids=task.descendant_ids  
+      task_ids<<task_id unless task_ids.include?(task_id)
+      objs=TaskOption.by_task(task_ids)
     else
-      @objs=TaskOption.all
+      objs=TaskOption.all
     end
-    respond_with @objs
+
+    opr = params[:opr]    
+    if opr && opr=='count' 
+      votes=TaskOption.user_vote
+      render :json => votes           
+    else 
+      options_by_task={}
+      objs.each do |obj|
+        task_id=obj.task_id
+        options_by_task[task_id]||=[]
+        opt={}
+        opt[:id]=obj.id
+        opt[:name]=obj.name
+        opt[:user_id]=obj.user_id      
+        opt[:user_name]=obj.user.vname if obj.user
+        opt[:count]=1
+        options_by_task[task_id]<<opt
+      end
+      render :json => [options_by_task]      
+    end   
   end 
   def create
     @obj=TaskOption.new(params[:task_option])

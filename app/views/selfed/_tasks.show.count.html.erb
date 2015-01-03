@@ -1,0 +1,35 @@
+<%= display(tts('task_common count'))%></br>
+<div ng-app="app" ng-controller='option_countsController' ng-init="initialize('<%= @root_id %>,<%= @user_id %>')"> 
+  <script type="text/ng-template" id="taskTree">
+    <div class='well' ng-mouseenter="item.showDelete=true" ng-mouseleave="item.showDelete=false">
+      {{item.name}}&nbsp;:&nbsp;{{item.user_vname}}
+      <span ng-show="item.showDelete">
+      <a class="btn btn-primary" ng-click="show_vote=!show_vote"><%=tt('count')%></a> 
+      </span>
+    </div> 
+    <div ng-if="show_vote && options[0][item.id].length>0">
+      <table class="table table-striped table-bordered table-condensed">
+      <tr><td><%=tt('option')%></td>
+           <td><%=tt('count')%></td> 
+      </tr>         
+      <ol>
+
+        <tr ng-repeat="opt in options[0][item.id]">
+        <row>
+        <td>{{opt.name}}</td><td>{{opt.count}}</td>  
+        </tr>
+     
+      </ol>
+      </table>      
+      </br>
+    </div>   
+    <ol ng-if="item.kids">
+      <li ng-repeat="item in item.kids" ng-include="'taskTree'">
+      </li>
+    </ol>
+  </script>
+  <ul>
+    <li ng-repeat="item in items" ng-include="'taskTree'"></li>
+  </ul> 
+</div>
+

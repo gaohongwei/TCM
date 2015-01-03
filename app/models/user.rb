@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
   attr_accessor :gid,:rid  
   def set_default
     self.active=true if self.active.nil?
-    self.name||=self.vname
+    self.vname||=self.get_vname
   end         
-  def vname
-    self.wname||self.name||self.email.split('@').first
+  def get_vname
+    self.fname||self.email.split('@').first
   end
   def group_list
     self.groups.map{|x|x.vname}.join(',')

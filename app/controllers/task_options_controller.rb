@@ -8,15 +8,6 @@ class TaskOptionsController < AdminController0
     end
     respond_with @objs
   end 
-  def create0
-    @objs=TaskOption.new(params[:task_option])    
-    if @objs.save 
-      respond_with [@objs.id]
-    else
-     respond_with []     
-    end
-  end   
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

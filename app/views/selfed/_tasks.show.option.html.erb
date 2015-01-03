@@ -1,0 +1,35 @@
+<%= display(tts('task_common detail'))%></br>
+<div ng-app="app" ng-controller='task_optionsController' ng-init="initialize('<%= @root_id %>,<%= @user_id %>')"> 
+  <script type="text/ng-template" id="taskTree">
+    <div class='well' ng-mouseenter="item.showDelete=true" ng-mouseleave="item.showDelete=false">
+      {{item.name}}&nbsp;:&nbsp;{{item.user_vname}}
+      <span ng-show="item.showDelete">
+      <a class="btn btn-primary" ng-click="item.add_more=true"><%=tt('add_option')%></a> 
+      <a class="btn btn-primary" ng-click="save_answers(item)"><%=tt('save_option')%></a>          
+      <a class="btn btn-primary" ng-click="add(item)"><%=tts('new child')%></a>
+      <a class="btn btn-danger" ng-click="exclude(item)"><%=tt('exclude')%></a>
+      <a class="btn btn-danger" ng-click="delete(item)"><%=tt('delete')%></a>
+      </span>
+    </div> 
+    <div ng-show="item.add_more">
+      <input type="text" ng-model="item.new"><a class="btn btn-primary" ng-click="add_option(item)"><%=tt('save')%></a><a class="btn btn-danger" ng-click="item.add_more=false"><%=tt('cancel')%></a>
+    </div>     
+    <div ng-if="options[0][item.id].length>0">
+      <%= tt('please_choose') %>
+      <ol>
+        <li ng-repeat="opt in options[0][item.id]">
+          <input type="checkbox" checklist-model="answers" checklist-value="opt.id" ng-change="updateSelection(event, opt)" ng-model="opt.isChecked" > {{opt.name}}&nbsp;:&nbsp;{{opt.user_name}}
+        </li>
+      </ol>
+      </br>
+    </div>   
+    <ol ng-if="item.kids">
+      <li ng-repeat="item in item.kids" ng-include="'taskTree'">
+      </li>
+    </ol>
+  </script>
+  <ul>
+    <li ng-repeat="item in items" ng-include="'taskTree'"></li>
+  </ul> 
+</div>
+

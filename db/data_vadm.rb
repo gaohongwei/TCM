@@ -76,10 +76,16 @@ view_adm:[
       caps:"name;description;photo"
     },  
 ############## Task View 
+# act,scope,label,nested_res=action_scope.split(':')
     {name:'task',action_scope:'index',
       cols:"name;description;user.name;public",  
       caps:"name;description;owner;public"         
     },  
+    {name:'task',action_scope:'show'},      
+    {name:'task',action_scope:'show:count'},          
+    {name:'task',action_scope:'show:option:user_input'}, 
+    {name:'task',action_scope:'edit'      
+    },           
     #{name:'task',action_scope:'index:tree'},      
 ############## Menu View     
     {name:'menu',action_scope:'index',
@@ -178,16 +184,16 @@ view_adm:[
     },  
 ########## User
     {name:'user',action_scope:'index',
-      cols:"email;name;wname;cell;qq;wechat;other;groups.first.name;active",
-      caps:"email;name;wname;cell;qq;wechat;other;group;active"
+      cols:"email;name;vname;cell;qq;wechat;other;groups.first.name;active",
+      caps:"email;name;vname;cell;qq;wechat;other;group;active"
     }, 
     {name:'user',action_scope:'edit',
-      cols:"name;wname;email;cell;qq;wechat;other;active;groups:c",
-      caps:"name;wname;email;cell;qq;wechat;other;active;groups"
+      cols:"name;vname;email;cell;qq;wechat;other;active;groups:c",
+      caps:"name;vname;email;cell;qq;wechat;other;active;groups"
     },
     {name:'user',action_scope:'show',
-      cols:"name;wname;email;cell;qq;wechat;other;active;group_list",
-      caps:"name;wname;email;cell;qq;wechat;other;active;groups"
+      cols:"name;vname;email;cell;qq;wechat;other;active;group_list",
+      caps:"name;vname;email;cell;qq;wechat;other;active;groups"
     },
 ########## Group
     {name:'group',action_scope:'index',

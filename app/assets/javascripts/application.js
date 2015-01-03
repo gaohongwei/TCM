@@ -21,7 +21,8 @@
 //= require angular-resource138.min.js 
 //= require checklist-model.js
 //= require services.js 
-//= require task.js 
+//= require task_options.js 
+//= require option_counts.js 
 //= jquery.toastmessage.js 
 //  require turbolinks
  

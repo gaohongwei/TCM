@@ -17,7 +17,7 @@ class TasksController < AdminController
     id= params[:id]
     if id 
       t=Task.find(id)
-      @objs=[get_nested(t,[:name,:id,'user.brief',:options])]
+      @objs=[get_nested(t,[:name,:id,'user.vname','user.id',:options])]
     else
       @objs = Task.top
     end

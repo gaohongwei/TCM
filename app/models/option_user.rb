@@ -13,6 +13,12 @@ class OptionUser < ActiveRecord::Base
   scope :by_option,lambda {|id|
     where(option_id:id)  
   }
+  def self.user_vote
+    select("option_users.option_id, count(option_users.user_id) AS vote").
+    group("option_users.option_id").
+    order("vote desc")
+  end 
+
   def self.get_options(task_id,user_id) 
   # task_ids can be array
     return [] unless task_id  
